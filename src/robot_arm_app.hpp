@@ -25,7 +25,7 @@ class RobotArm {
 
     void draw() {
         for (const auto& joint : joints) {
-            ofRotateRad(joint.angle);
+            ofRotate(ofRadToDeg(joint.angle));
             ofTranslate(joint.length / 2, 0, 0);
             ofSetColor(0, 0, 0, 63);
             ofFill();
@@ -157,7 +157,7 @@ void RobotArmApp::draw() {
 
     ofPushMatrix();
 
-    ofRotateRad(HALF_PI);
+    ofRotate(ofRadToDeg(HALF_PI));
 
     ofDrawGridPlane(10, 100);
 
