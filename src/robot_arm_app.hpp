@@ -80,7 +80,6 @@ class RobotArm {
                 for (auto i = 0; i < 3; ++i) {
                     joints[i].target = ofWrap(q(i), -PI, PI);
                 }
-
                 break;
             }
 
@@ -149,32 +148,23 @@ void RobotArmApp::setup() {
 void RobotArmApp::update() { robotArm.update(); }
 
 void RobotArmApp::draw() {
-    ofSetLineWidth(3);
-
     camera.begin();
 
-    ofSetColor(0, 0, 0, 63);
-
     ofPushMatrix();
-
     ofRotate(ofRadToDeg(HALF_PI));
-
+    ofSetColor(0, 0, 0, 63);
     ofDrawGridPlane(10, 100);
-
     ofPopMatrix();
 
     ofSetColor(0, 0, 0, 255);
-
+    ofSetLineWidth(3);
     ofDrawSphere(position->x, position->y, 10);
-
     robotArm.draw();
 
     camera.end();
 
     ofSetColor(0, 0, 0, 255);
-
     gui.draw();
-
     bigFont.drawString("Robot Arm", ofGetWidth() - 300, 80);
     smallFont.drawString("Gauss-Newton Method", ofGetWidth() - 300, 120);
 }
